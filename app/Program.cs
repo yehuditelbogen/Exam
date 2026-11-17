@@ -76,7 +76,7 @@ class Program
         if (string.IsNullOrWhiteSpace(row[0]) || string.IsNullOrWhiteSpace(row[1]) ||
             string.IsNullOrWhiteSpace(row[2]) || string.IsNullOrWhiteSpace(row[3]) ||
             string.IsNullOrWhiteSpace(row[4])) return false;
-        if (row[2] != "student" && row[2] != "teacher" && row[2] != "guest") return false;
+        if (row[2] != "student" && row[2] != "teacher" && row[2] != "guest" && row[2] != "alumna") return false;
         if (!int.TryParse(row[4], NumberStyles.Integer, CultureInfo.InvariantCulture, out int loanDay)) return false;
 
         int endDay = currentReportDay;
@@ -89,12 +89,17 @@ class Program
         if (row[2] == "student")
         {
             int lateDays = days - 14;
-            if (lateDays >= 2) fine = Math.Min(lateDays, 30);
+            if (lateDays >= 2) fine = Math.Min(lateDays, 40);
         }
         else if (row[2] == "guest")
         {
             int lateDays = days - 7;
             if (lateDays > 0) fine = decimal.Ceiling(lateDays * 2.5m);
+        }
+        else if (row[2] == "alumna")
+        {
+            int lateDays = days - 10;
+            if (lateDays > 0) fine = Math.Min(decimal.Ceiling(lateDays * 1.5m), 25);
         }
 
         processedRow = new ProcessedRow
