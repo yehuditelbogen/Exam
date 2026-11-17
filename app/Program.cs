@@ -1,3 +1,4 @@
+//using App;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,8 +20,47 @@ class Program
         Console.Error.WriteLine("skeleton ok: read " + Path.GetFileName(path) + " - report day " + reportDay + " - " + rows.Count + " rows");
 
         // Write your code here. 'reportDay' and 'rows' are ready.
+        Console.WriteLine("\n");
+        Console.WriteLine("FINES");
+        Console.WriteLine(PrintFinse(rows));
+        Console.WriteLine("...");
+
+        Console.WriteLine("\n");
+        Console.WriteLine("FLAGGED");
+        Console.WriteLine(PrintFlagged(rows));        
+        Console.WriteLine("...");
     }
 
+    static void PrintFinse(List<string[]> rows)
+    {
+        int help;
+        for(int i=0; i<rows.Count; i++ )
+        {
+            for(int j=0; j<rows[i].Length; j++ )
+            {
+                if ((rows[i][5])-(rows[i][4])<=14)
+                    Console.WriteLine(rows[i][0]+","+0);
+                if ((rows[i][5]) - (rows[i][4]) > 14)
+                    help = (rows[i][4]) - (rows[i][5]);
+                    Console.WriteLine(rows[i][0] + "," + help);
+            }
+            Console.WriteLine("\n");
+        }
+    }
+
+    static void PrintFlagged(List<string[]> rows)
+    {
+        int help;
+        for (int i = 0; i < rows.Count; i++)
+        {
+            for (int j = 0; j < rows[i].Length; j++)
+            {
+                    Console.WriteLine(rows[i][0]);
+                Console.WriteLine(rows[i][1]);
+            }
+            Console.WriteLine("\n");
+        }
+    }
     static int ReadReportDay(string[] lines)
     {
         return int.Parse(lines[0].Split(':')[1].Trim());
