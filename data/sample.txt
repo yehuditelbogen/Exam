@@ -1,0 +1,8 @@
+report_day: 120
+reader_id,name,type,book,loan_day,return_day
+11,רחל כהן,student,איסתרק,10,24
+12,מרים לוי,student,קיצור שולחן ערוך,30,
+21,שרה גולד,teacher,להשאר יהודי,40,
+31,לאה רוזן,guest,עולם חירש,100,110
+13,דינה אבן,student,קיצור שולחן ערוך,50,45
+11,רחל כהן,student,עולם חירש,60,76

@@ -1,0 +1,7 @@
+out/
+app/bin/
+app/obj/
+__pycache__/
+.idea/
+.vs/
+.vscode/
